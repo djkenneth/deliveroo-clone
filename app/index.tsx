@@ -1,27 +1,17 @@
 import React, { useEffect } from 'react'
 import { View, Text, Pressable, Button, ActivityIndicator } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Link, useRouter } from 'expo-router'
 
-const Index = () => {
+const Page = () => {
   const router = useRouter()
-
   return (
-    // <SafeAreaView>
       <View>
-        {/* <Text>Index</Text> */}
-        {/* <Button onPress={() => router.push('/register')} title='Open Register' /> */}
-
-        {/* Link Navigation */}
+        <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni eum explicabo dolorem quidem, laborum reprehenderit harum error. A quod reiciendis eum laborum, et temporibus ducimus sint maiores quaerat nostrum optio? Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto blanditiis, tempore vel cum quasi magni recusandae architecto officiis consectetur sit nesciunt quod ducimus velit cumque voluptatem eligendi iure. Dolores, hic.</Text>
         <Link href={'/(tabs)/(one)/one'} replace asChild>
           <Button title='Login' />
         </Link>
-
-        {/* {todosQuery.isLoading ? <ActivityIndicator size={'large'} /> : null}
-        {todosQuery.isError ? <Text>Error</Text> : null} */}
       </View>
-    // </SafeAreaView>
   )
 }
 
-export default Index
+export default Page

@@ -1,37 +1,29 @@
-import React from 'react'
-import { Stack } from 'expo-router'
+import FontAwesome from '@expo/vector-icons/FontAwesome'
+import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
+import { useFonts } from 'expo-font'
+import { SplashScreen, Stack } from 'expo-router'
+import { useEffect } from 'react'
+import { useColorScheme } from 'react-native'
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+// Componenets
+import CustomHeader from '../components/CustomHeader'
 
-  // Create a client
-  const queryClient = new QueryClient({
-    defaultOptions: { queries: { retry: 2 } },
-  })
+export const unstable_settings = {
+  initialRouteName: 'index'
+}
 
-const StackLayout = () => {
-
+export default function RootLayoutNav() {
   return (
-    <>
-      <QueryClientProvider client={queryClient}>
-        <Stack
-          screenOptions={{
-              headerStyle: {
-                  backgroundColor: '#10101E'
-              },
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                  fontWeight: 'bold'
-              }
-          }}
-          >
-              <Stack.Screen name='index' options={{ headerTitle: 'Login', headerShown: true }} />
+      <BottomSheetModalProvider>
+        <Stack>
+              <Stack.Screen name='index' options={{
+                header: () => <CustomHeader />
+              }} />
               <Stack.Screen name='register' options={{ headerTitle: 'Register', headerShown: true }} />
               <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
               <Stack.Screen name='modal' options={{ presentation: 'modal' }} />
         </Stack>
-      </QueryClientProvider>
-    </>
+      </BottomSheetModalProvider>
   )
 }
-
-export default StackLayout
